@@ -1,0 +1,64 @@
+class Strasbourg:
+    def message_handler(self):
+        return "Повідомлення про місто Страсбург"
+
+class Toulouse:
+    def message_handler(self):
+        return "Повідомлення про місто Тулуза"
+
+class Marseille:
+    def message_handler(self):
+        return "Повідомлення про місто Марсель"
+
+class Birmingham:
+    def message_handler(self):
+        return "Повідомлення про місто Бірмінгем"
+
+class Manchester:
+    def message_handler(self):
+        return "Повідомлення про місто Манчестер"
+
+class Canberra:
+    def message_handler(self):
+        return "Повідомлення про місто Канберра"
+
+class Sydney:
+    def message_handler(self):
+        return "Повідомлення про місто Сідней"
+
+class Melbourne:
+    def message_handler(self):
+        return "Повідомлення про місто Мельбурн"
+
+class Europe:
+    def __init__(self):
+        self.cities = [Strasbourg(), Toulouse(), Marseille(), Birmingham(), Manchester()]
+
+    def message_handler(self):
+        messages = []
+        for city in self.cities:
+            messages.append(city.message_handler())
+        return messages
+
+class Australia:
+    def __init__(self):
+        self.cities = [Canberra(), Sydney(), Melbourne()]
+
+    def message_handler(self):
+        messages = []
+        for city in self.cities:
+            messages.append(city.message_handler())
+        return messages
+
+# Створення об'єктів класів та виклик обробників повідомлень
+europe = Europe()
+australia = Australia()
+
+# Виведення повідомлень
+print("Повідомлення для Європи:")
+for message in europe.message_handler():
+    print(message)
+
+print("\nПовідомлення для Австралії:")
+for message in australia.message_handler():
+    print(message)
