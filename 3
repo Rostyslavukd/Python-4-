@@ -1,0 +1,61 @@
+class Element:
+    def __init__(self, name):
+        self.name = name
+
+    def connect(self, other_element, input_number, output_number):
+        # Підключення до іншого елементу
+        pass
+
+class Source(Element):
+    def __init__(self, name):
+        super().__init__(name)
+
+class Gate(Element):
+    def __init__(self, name):
+        super().__init__(name)
+
+class AndGate(Gate):
+    def __init__(self, name):
+        super().__init__(name)
+
+class OrGate(Gate):
+    def __init__(self, name):
+        super().__init__(name)
+
+class Sink(Element):
+    def __init__(self, name):
+        super().__init__(name)
+
+# Створення об'єктів
+source1 = Source("Джерело1")
+source2 = Source("Джерело2")
+and_gate = AndGate("І-елемент")
+or_gate = OrGate("АБО-елемент")
+sink = Sink("Приймач")
+
+# Підключення елементів
+and_gate.connect(source1, input_number=1, output_number=1)
+and_gate.connect(source2, input_number=2, output_number=2)
+or_gate.connect(and_gate, input_number=1, output_number=1)
+or_gate.connect(source2, input_number=2, output_number=2)
+sink.connect(or_gate, input_number=1, output_number=1)
+
+# Запис визначень класів, об'єктів-екземплярів та методів класів у файл
+with open("definitions.txt", "w") as file:
+    # Запис класів
+    file.write("Класи:\n")
+    classes = [Element, Source, Gate, AndGate, OrGate, Sink]
+    for cls in classes:
+        file.write(f"{cls.__name__}\n")
+    
+    # Запис об'єктів-екземплярів
+    file.write("\nОб'єкти-екземпляри:\n")
+    objects = [source1, source2, and_gate, or_gate, sink]
+    for obj in objects:
+        file.write(f"{obj.name}: {obj.__class__.__name__}\n")
+    
+    # Запис методів класів
+    file.write("\nМетоди класів:\n")
+    methods = [Element.__init__, Element.connect]
+    for method in methods:
+        file.write(f"{method.__name__} - {method.__doc__}\n")
