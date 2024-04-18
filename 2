@@ -1,0 +1,34 @@
+class CityMessageHandler:
+    def __init__(self, city_name):
+        self.city_name = city_name
+    
+    def handle_message(self):
+        return f"Повідомлення про місто {self.city_name}"
+
+class StrasbourgMessageHandler(CityMessageHandler):
+    def __init__(self):
+        super().__init__("Страсбург")
+
+class ToulouseMessageHandler(CityMessageHandler):
+    def __init__(self):
+        super().__init__("Тулуза")
+
+# Додайте інші класи-спадкоємці для інших міст
+
+class Europe:
+    def __init__(self):
+        self.cities = [StrasbourgMessageHandler(), ToulouseMessageHandler()]
+
+    def message_handler(self):
+        messages = []
+        for city in self.cities:
+            messages.append(city.handle_message())
+        return messages
+
+# Створення об'єктів класів та виклик обробників повідомлень
+europe = Europe()
+
+# Виведення повідомлень
+print("Повідомлення для Європи:")
+for message in europe.message_handler():
+    print(message)
